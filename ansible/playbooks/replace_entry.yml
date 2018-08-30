@@ -1,0 +1,10 @@
+#replace the IP address
+- hosts: all
+  name: replace hosts file on all machines
+  become: yes
+  tasks:
+    - name: remove old entries
+      replace:
+        dest: /etc/hosts
+        regexp: '192.168.181.92'
+        replace: '192.168.181.90'

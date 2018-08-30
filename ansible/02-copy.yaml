@@ -1,0 +1,11 @@
+-
+ name: copy files
+ hosts: all
+ tasks:
+  - name: copy files
+    copy:
+      src: /home/ishan/abctest
+      dest: /home/ishan/
+      owner: ishan
+      group: ishan
+      mode: 0644 

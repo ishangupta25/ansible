@@ -1,0 +1,26 @@
+- hosts: all
+  name: upate hosts file on all machines
+  become: yes
+  tasks:
+    - name: remove old entries
+      lineinfile:
+        dest: /etc/hosts
+        state: absent
+        regexp: "{{ item.regexp }}"
+      with_items:
+        - { regexp: '^192.168.181' }
+        - { regexp: '^192.168.181' }
+        - { regexp: '^192.168.181' }
+        - { regexp: '^192.168.181' }
+        - { regexp: '^192.168.181' }
+
+    - name: update host file on all machines
+      blockinfile:
+        dest: /etc/hosts
+        block: |
+          192.168.56.3  ansiblecontroller control
+          192.168.56.4  target1 db01
+          192.168.56.5  target2 web01
+          192.168.56.7  target4 web02
+          192.168.56.6  target3 lb01
+        insertafter: '^127.0.1.1'

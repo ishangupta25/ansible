@@ -1,0 +1,11 @@
+- 
+  name: "Uninstall apache2"
+  hosts: target2
+  tasks:
+    - 
+     name: remove apache
+     apt: 
+       name: apache2 
+       state: absent 
+       purge: yes
+     become: yes

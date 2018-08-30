@@ -1,0 +1,15 @@
+#update the IP in with_items and run the playbook.
+- hosts: all
+  become: yes
+  tasks:
+   - name: update host file on all machines
+     blockinfile:
+       dest: /etc/hosts
+       #state: absent
+       marker: "# {mark} ANSIBLE MANAGED BLOCK"
+       block: |
+         192.168.56.3  ansiblecontroller control
+         192.168.56.4  target1 db01
+         192.168.56.5  target2 web01
+         192.168.56.7  target4 web02
+         192.168.56.6  target3 lb01

@@ -1,0 +1,16 @@
+target1 ansible_host=192.168.56.4 ansible_ssh_pass=ishangupta ansible_become_pass=ishangupta
+target2 ansible_host=192.168.56.5 ansible_ssh_pass=ishangupta ansible_become_pass=ishangupta
+target3 ansible_host=192.168.56.6 ansible_ssh_pass=ishangupta ansible_become_pass=ishangupta
+target4 ansible_host=192.168.56.7 ansible_ssh_pass=ishangupta ansible_become_pass=ishangupta
+control ansible_host=192.168.56.3 ansible_ssh_pass=ishangupta ansible_become_pass=ishangupta
+
+
+[loadbalancer]
+target3
+
+[database]
+target1
+
+[webserver]
+target2
+target4
